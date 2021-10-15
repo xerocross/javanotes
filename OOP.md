@@ -42,6 +42,6 @@ interfaces
 ## Abstraction
 
 Abstraction is the goal of making the implementation details of
-an object invisible to the user. Instead, the object provides a 
+an object invisible to the object's user. Instead, the object provides a 
 simple public interface, and the details behind the interface can
 change without having to change the interface.

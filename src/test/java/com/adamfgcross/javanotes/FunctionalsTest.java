@@ -78,7 +78,7 @@ public class FunctionalsTest {
     }
 
     @Test
-    static void testWithClosure() {
+    void testWithClosure() {
         int i = 0;
         // this will not compile because variables used in lambdas have
         // to be final or effectively final
@@ -91,6 +91,21 @@ public class FunctionalsTest {
 //                return null;
 //            }
 //        };
+    }
+
+    @Test
+    void useFunction() {
+        //Function<Integer, Long> myFunc = (x)-> x; //this won't compile. It says Integer cannot be converted to a Long
+        Function<Integer, Long> myFunc = (x)-> Long.valueOf(x); // this works even though the last one doesn't.
+        Function<Integer, Long> myFunc2 = Long::valueOf; // this is a way of using method references that I didn't know
+        //Supplier<Integer> supplier = ()-> (int) 100*Math.random(); // why doesn't this work even though
+        Supplier<Integer> supplier = ()-> (int) Math.floor(100*Math.random()); // this works
+        Stream<Integer> myStream = Stream.generate(supplier).limit(1000);
+        Stream<Long> myLongStream = myStream.map(myFunc2);
+        Set<Long> set = myLongStream.collect(Collectors.toSet());
+        int size = set.size(); // the size is unpredictable
+        System.out.println("size: " + size);
+        assertTrue(size > 0);
     }
 
 }
