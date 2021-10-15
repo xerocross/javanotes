@@ -16,6 +16,8 @@ java notes:
       - "If you use variables from the closure in a lambda expression, they must be final or effectively final. See FunctionalsTests":
           - "Why?":
               - "One source cites possible concurrency problems as the reason."
+  - abstract classes:
+      - "you can define an instance of an abstract class using an anonymous class in place. See MySpecializedAbstractClassTest"
   - functionals:
       - build-it functionals:
           - "the built-in functionals are in java.util.function"
