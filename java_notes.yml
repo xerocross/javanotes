@@ -1,0 +1,33 @@
+---
+java notes:
+  - strings see StringsTests:
+      - "the _intern_ method on a string looks in the string pool and returns an equal string there";
+      - "The _concat_ method on a String object concatenates the string with its argument string."
+  - streams:
+      - "streams are in java.util.stream"
+      - "IntStream.generate accepts a supplier lambda";
+      - IntStream:
+          - "An IntStream cannot accept filter with a Predicate<Integer>. You have to use IntPredicate."
+          - "To map the stream from int to long, you have to use the _mapToLong_ method on the stream. The _map_ method is not robust like for the Stream object."
+      - map:
+          - "The map function for Stream is robust enough to handle converting one object to another, unlike primitive streams. FunctionalsTests"
+  - lambdas:
+      - "when specifying the type in a lambda expression, parentheses around the argument are obligatory"
+      - "If you use variables from the closure in a lambda expression, they must be final or effectively final. See FunctionalsTests":
+          - "Why?":
+              - "One source cites possible concurrency problems as the reason."
+  - functionals:
+      - build-it functionals:
+          - "the built-in functionals are in java.util.function"
+          - Consumer:
+              - "you can define a raw instance of the parameterized class Consumer, and then you can pass an int into it, but the int gets autoboxed. See see AutoBoxingAndLambdaTest.java"
+              - "consumer's method to apply the functional is _accept_"
+          - Predicate:
+          - IntPredicate:
+          - IntConsumer:
+          - Supplier:
+              - "The function of a Supplier for getting a value from it is _get_."
+          - IntSupplier:
+              - "It's noteworthy that Java requires these specialized functionals for primitive types. see FunctionalsTests"
+  - autoboxing/unboxing:
+      - "primitives get autoboxed when passed into Consumer<X> functionals. See see AutoBoxingAndLambdaTest.java"
