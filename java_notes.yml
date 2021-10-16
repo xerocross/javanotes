@@ -1,5 +1,8 @@
 ---
 java notes:
+  - nested classes:
+      - inner classes:
+          - "inner classes cannot have static declarations"
   - strings see StringsTests:
       - "the _intern_ method on a string looks in the string pool and returns an equal string there";
       - "The _concat_ method on a String object concatenates the string with its argument string."
