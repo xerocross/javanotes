@@ -7,6 +7,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NestedClassExperiment {
+    private static String somePrivateMember = "private member";
+    private static class Range {
+        private Integer max;
+        private Integer min;
+        public static Range of (int min, int max) {
+            System.out.println("accessing an outer class private static field: " + somePrivateMember);
+            Range range = new Range();
+            range.max = max;
+            range.min = min;
+            return range;
+        }
+        private Range(){};
+        @Override
+        public String toString() {
+            return String.format("[%d, %d]", min, max);
+        }
+    }
+
 
     public static void main(String[] args) {
         System.out.println("Running NestedClassExperiment");
@@ -16,10 +34,35 @@ public class NestedClassExperiment {
         // I can reach it here.
         NestedClassExperiment.MyInnerClassB myInnerClassB = nestedClassExperiment.myInnerClassB; // since we are inside NestedClassExperiment
         // we can still reach this private inner class. However, see NestedClassExperimentTest
+        tryAnonymousClass();
+
+        // can I create a Pair object?
+        NestedClassExperiment.Range range = NestedClassExperiment.Range.of(3,5); // using NestedClassExperiment here is optional
+        System.out.println("My range:" + range);
 
 
     }
 
+    public static Range getRange(int a, int b) {
+        return Range.of(a, b);
+    }
+
+
+    static void tryAnonymousClass() {
+
+        // I'm not sure if this is technically an anonymous function, since it
+        // has a reference called instance
+        MySimpleInterface instance = new MySimpleInterface() {
+            @Override
+            public void doSomething(){}
+
+            @Override
+            public void doSomethingElse() {
+            }
+        };
+
+
+    }
 
     static String someConstant = "someConstant";
     String someOtherConstant = "A";
