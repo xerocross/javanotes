@@ -1,5 +1,18 @@
 ---
 java notes:
+  - data structures:
+      - queue:
+          - "A queue interface is first in, first out"
+          - "The canonical functions for interacting with a queue":
+              - "offer"
+              - "peek"
+              - "poll"
+      - stack:
+          - "The canonical functions for interacting with a stack":
+              - "push"
+              - "pop"
+              - "peek"
+
   - nested classes:
       - inner classes:
           - "inner classes cannot have static declarations"
