@@ -8,6 +8,6 @@ public interface MyInterfaceWithDefault {
         System.out.println("I'm a function defined in an interface");
     }
 
-    // you don't have to write 'public', but you can. It's implied either way.
+    // you don't have to write 'public', but you can.
     public void doSomethingElse();
 }

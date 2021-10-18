@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.*;
 import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -100,6 +101,49 @@ public class DateAndTimeTest {
     void lookAtMidnight() {
         LocalTime localTime = LocalTime.MIDNIGHT;
         System.out.println(localTime);
+    }
+
+    @Test
+    void weirdCases() {
+
+        assertThrows(DateTimeException.class, ()->{
+            //February 31
+            LocalDate localDate = LocalDate.of(2020, 2, 31);
+        });
+
+
+        assertThrows(DateTimeException.class, ()->{
+            //February 31
+            LocalDate localDate = LocalDate.of(2020, 2, 12);
+            LocalDate localDate2 = localDate.minus(1, ChronoUnit.HOURS);
+        });
+
+        assertDoesNotThrow(() -> {
+
+            LocalDate localDate = LocalDate.of(2020, 2, 12);
+            LocalDate localDate2 = localDate.minus(1, ChronoUnit.DAYS);
+        });
+    }
+
+    @Test
+    void localTimeExample_1() {
+        LocalTime localTime = LocalTime.now();
+        System.out.println(localTime);
+    }
+
+    @Test
+    void localTimeExample_2() {
+        LocalTime localTime = LocalTime.of(8,15);
+        System.out.println(localTime);
+        LocalDate localDate = LocalDate.of(2020, Month.JANUARY, 5);
+
+        LocalDateTime localDateTime = localDate.atTime(localTime);
+        System.out.println(localDateTime);
+        LocalDateTime localDateTime1 = LocalDateTime.of(2020, 1, 5, 8, 15);
+        assertEquals(localDateTime1, localDateTime);
+        assertTrue(localDateTime.isEqual(localDateTime1));
+        assertTrue(localDateTime.equals(localDateTime1));
+
     }
 
 }
