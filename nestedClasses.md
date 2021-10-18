@@ -31,7 +31,7 @@ Runnable
 as an argument, and thus you can pass a method by defining the method inside 
 a Runnable, declared and defined anonymously in place, as in NestedClassExperiment.
 
-# Inner Class
+## Inner Class
 
 An inner class is a non-static class defined at the member level of another class, 
 called the outer class. Unlike top-level classes, an inner class can be declared
