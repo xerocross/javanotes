@@ -69,5 +69,4 @@ public class CharsAndStringsTest {
 
         System.out.println(charStrings);
     }
-
 }
