@@ -1,6 +1,8 @@
 package com.adamfgcross.javanotes.birds;
 
-public class Bird {
+import com.adamfgcross.javanotes.Animal;
+
+public class Bird extends Animal {
     protected String identity = "I'm a bird";
 
     protected static void staticProtectedMethod() {
@@ -13,5 +15,10 @@ public class Bird {
 
     private void privateMethod() {
         System.out.println("private bird method called");
+    }
+
+    @Override
+    protected void doSomething() {
+
     }
 }
